@@ -121,7 +121,7 @@ int main()
 				string fullName = firstNames[rand() % (sizeof(firstNames) / sizeof(firstNames[0]))] + " " + lastNames[rand() % (sizeof(lastNames) / sizeof(lastNames[0]))];
 				Reservation* reservation = new Reservation();
 				reservation->setClient(fullName);
-				reservation->setArrival((rand() % 30)+1);
+				reservation->setArrival(rand() % 30);
 				reservation->setDaysOfStay(rand() % (31 - reservation->getArrival())+1);
 				reservation->setNumberOfPeople(rand() % 5 + 1);
 				hotel->addReservationToFirstRoom(reservation);
