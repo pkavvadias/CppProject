@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <random>
 #include <string>
 #include "ReservationHeader.h"
 #include "RoomHeader.h"
@@ -8,7 +7,6 @@
 #include <iomanip>
 
 
-//typedef basic_string < char > string;
 using namespace std;
 
 int main()
