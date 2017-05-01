@@ -10,11 +10,11 @@ private:
 	int RoomNumber;
 	int MaxCapacity;
 	double PricePerPerson;
-	//Reservation* Availability[30];
 	static int RoomId;
-//protected:
-public:Reservation* Availability[30];
+
 public:
+	Reservation* Availability[30];
+
 	Room();
 	int getRoomNumber();
 	void setMaxCapacity(int);
