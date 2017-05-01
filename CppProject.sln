@@ -7,6 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppProject", "CppProject\Cp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21805E30-3ECC-4B0E-AFD1-D0C46F1652FF}"
 	ProjectSection(SolutionItems) = preProject
+		Debug\CppProject.exe = Debug\CppProject.exe
 		README.txt = README.txt
 	EndProjectSection
 EndProject
