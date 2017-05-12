@@ -113,7 +113,6 @@ int main()
 		int k = 0;
 		int term = 0;
 		int random_cancel;
-		//for (int i = 0;; i++) {
 	while(term!=-1){
 			while (k == 0) {
 				string fullName = firstNames[rand() % (sizeof(firstNames) / sizeof(firstNames[0]))] + " " + lastNames[rand() % (sizeof(lastNames) / sizeof(lastNames[0]))];
@@ -123,7 +122,7 @@ int main()
 				reservation->setDaysOfStay(rand() % (31 - reservation->getArrival())+1);
 				reservation->setNumberOfPeople(rand() % 5 + 1);
 				hotel->addReservationToFirstRoom(reservation);
-				hotel->setReservations(reservation);
+				//hotel->setReservations(reservation);Test
 				random_cancel = rand() % 3;
 				if (random_cancel == 2)
 				{
@@ -209,7 +208,7 @@ int main()
 				}
 				else {
 					hotel->addReservationToFirstRoom(newres);
-					hotel->setReservations(newres);
+					//hotel->setReservations(newres);Test
 				}
 			}
 					break;
@@ -295,7 +294,7 @@ int main()
 				break;
 			}
 		}
-	getchar();
+		return 0;
 }
 
 	

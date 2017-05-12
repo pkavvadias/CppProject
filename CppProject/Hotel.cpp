@@ -80,16 +80,19 @@ bool Hotel::addReservationToRoom(Reservation* r, int rnumb)
 				r->setRoom(retrieveRoomFromNumber(rnumb));
 				if (retrieveRoomFromNumber(rnumb)->addReservation(r) == false)
 				{
-					r->getRoom()->cancel(r->getReservationNumber());//May cause issues.Needs testing
+					r->getRoom()->cancel(r->getReservationNumber());
 					cout << "Reservation not added.Check room's requirements"<<endl;
+					a = false;
 					break;
 				}
 				cout << "Reservation with reservation id " << r->getReservationNumber() << " added successfully to room with id " << rnumb<<endl;
 				reservations.push_back(r);
+				a = true;
 				break;
 			}
 
 		}
+		if (a == false) { delete r; }//Needs testing
 	}
 	return a;
 }
@@ -110,10 +113,8 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 				if (rooms[i]->addReservation(reserv) == false)
 				{
 					rooms[i]->cancel(reserv->getReservationNumber());//Warning needs testing
-					//delete reserv;//Test for deleting pointer
 					if (i < rooms.size() + 1) {
 						i = i + 1;
-						//continue;
 					}
 					else {
 						a = 0;
@@ -129,8 +130,8 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 					rooms[i]->addReservation(reserv);//Adds reservation to the room of the array
 					retrieveRoomFromNumber(rooms[i]->getRoomNumber())->addReservation(reserv);
 					reservid = reserv->getReservationNumber();
+					reservations.push_back(reserv);
 					stopper = 1;
-					//delete reserv;
 				}
 
 			}
@@ -144,6 +145,7 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 	}
 		if (a == 0)
 		{
+			delete reserv;//Test for deleting pointer
 			cout<<"No available room found"<<endl;
 			return a;
 		}
@@ -158,13 +160,13 @@ void Hotel::cancelReservation(int reservationid)
 {
 	if (retrieveReservationFromNumber(reservationid) != nullptr)
 	{
-	//	retrieveReservationFromNumber(reservationid)->getRoom()->cancel(reservationid);//needs testing
 		for(int i=0;i<reservations.size();i++)
 		{
 			if(reservations[i]->getReservationNumber()==reservationid)
 			{
+				reservations[i]->getRoom()->cancel(reservationid);
+				delete reservations[i];//Test for deleting pointer
 				reservations.erase(reservations.begin()+i);
-				//delete retrieveReservationFromNumber(reservationid);//Test for deleting pointer
 			}
 		}
 		cout<< "Reservation with reservation id " << reservationid << " was canceled"<<endl;
