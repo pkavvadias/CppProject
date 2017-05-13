@@ -9,7 +9,7 @@ int Room::RoomId = 100;
 Room::Room() {
 	RoomNumber = RoomId;
 	RoomId++;
-	for(int i=0;i<31;i++)
+	for(int i=0;i<30;i++)
 	{
 		Availability[i] = nullptr;
 	}
