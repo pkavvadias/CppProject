@@ -1,9 +1,5 @@
-//#include <atomic>
-#include <string>
 #include "ReservationHeader.h"
 #include "RoomHeader.h"
-typedef basic_string < char > string;
-
 RoomTypeA::RoomTypeA(){}
 void RoomTypeA::setPricePerDay(double i){
     PricePerDay=i;

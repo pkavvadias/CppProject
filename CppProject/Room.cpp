@@ -1,9 +1,6 @@
-#include <string>
 #include "ReservationHeader.h"
 #include "RoomHeader.h"
 
-
-typedef basic_string < char > string;
 
 Reservation* Availability[30]{0};
 

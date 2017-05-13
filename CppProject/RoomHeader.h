@@ -1,7 +1,6 @@
 #ifndef ROOMHEADER_H_INCLUDED
 #define ROOMHEADER_H_INCLUDED
 
-#include <string>
 using namespace std;
 
 class Reservation;
@@ -86,4 +85,4 @@ public:
 	virtual bool cancel(int) override;
 };
 
-#endif //ROOMHEADER_H_INCLUDED
+#endif 

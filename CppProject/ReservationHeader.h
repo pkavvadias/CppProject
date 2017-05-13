@@ -1,8 +1,9 @@
 #ifndef RESERVATIONHEADER_H_INCLUDED
 #define RESERVATIONHEADER_H_INCLUDED
-
 #include <string>
+
 using namespace std;
+
 
 class Room;
 class Reservation {
@@ -31,4 +32,4 @@ public:
 	string getClient();
 };
 
-#endif // RESERVATIONHEADER_H_INCLUDED
+#endif 

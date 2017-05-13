@@ -1,8 +1,5 @@
-//#include <atomic>
-#include <string>
 #include "ReservationHeader.h"
 #include "RoomHeader.h"
-typedef basic_string < char > string;
 
 /* Children under 3 years of age have special beds and pay
 ** half the price per person each day.*/

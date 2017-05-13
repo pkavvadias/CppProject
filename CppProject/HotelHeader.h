@@ -1,6 +1,5 @@
 #ifndef HOTELHEADER_H_INCLUDED
 #define HOTELHEADER_H_INCLUDED
-#include <string>
 #include<vector>
 using namespace std;
 class Room;
@@ -12,7 +11,6 @@ private:
 	vector<Room*> rooms;
 	vector<Reservation*> reservations;
 public:
-	//Hotel();
 	void addRoom(Room*);
 	void setHotelName(string);
 	string getHotelName();
