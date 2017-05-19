@@ -24,6 +24,6 @@ public:
 	void cancelReservation(int);
 	double incomeCalculate(int);
 	double incomeCalculate();
-	void reservationPlan();
+	void reservationPlan();	
 };
 #endif

@@ -122,7 +122,6 @@ int main()
 				reservation->setDaysOfStay(rand() % (31 - reservation->getArrival())+1);
 				reservation->setNumberOfPeople(rand() % 5 + 1);
 				hotel->addReservationToFirstRoom(reservation);
-				//hotel->setReservations(reservation);Test
 				random_cancel = rand() % 3;
 				if (random_cancel == 2)
 				{
@@ -208,7 +207,6 @@ int main()
 				}
 				else {
 					hotel->addReservationToFirstRoom(newres);
-					//hotel->setReservations(newres);Test
 				}
 			}
 					break;

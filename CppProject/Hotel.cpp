@@ -5,6 +5,43 @@
 #include <iostream>
 #include <iomanip>//Required for aligning of reservation plan
 
+/*
+ * Overloading operator '-'
+ */
+void operator-(vector<Reservation*>&v, int resid) //Test for operator overloading
+{
+	for (int i = 0; i < v.size(); i++)
+	{
+		if (v[i]->getReservationNumber() == resid)
+		{
+			v[i]->getRoom()->cancel(resid);
+			delete v[i];
+			v.erase(v.begin() + i);
+		}
+	}
+}
+
+/*
+ * Overloading operator '+='
+ */
+double operator+=(double,vector<Room*>&v)
+{
+	double income=0;
+	for(Room* r:v)
+	{
+		income += r->costCalculate();
+	}
+	return income;
+}
+
+/*
+ * Overloading operator '+'
+ */
+void operator+(vector<Reservation*>&v,Reservation* &res)
+{
+	v.push_back(res);
+}
+
 void Hotel::addRoom(Room* r)
 {
 	rooms.push_back(r);
@@ -86,13 +123,14 @@ bool Hotel::addReservationToRoom(Reservation* r, int rnumb)
 					break;
 				}
 				cout << "Reservation with reservation id " << r->getReservationNumber() << " added successfully to room with id " << rnumb<<endl;
-				reservations.push_back(r);
+				//reservations.push_back(r);
+				reservations + r;//Overloaded operator '+'
 				a = true;
 				break;
 			}
 
 		}
-		if (a == false) { delete r; }//Needs testing
+		if (a == false) { delete r; }
 	}
 	return a;
 }
@@ -104,15 +142,16 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 	for (int i = 0; i < rooms.size(); i++) {
 		for (int k = reserv->getArrival(); k < (reserv->getArrival() + reserv->getDaysOfStay()); k++)
 		{
-			if (rooms[i]->getAvailabilityI(k) != nullptr) {//Checks if room i is available the reservation dates
-				//Warning needs testing.May cause exceptions
+			if (rooms[i]->getAvailabilityI(k) != nullptr) //Checks if room i is available the reservation dates
+			{
+				
 				a = 0;
 			}
 			else
 			{
 				if (rooms[i]->addReservation(reserv) == false)
 				{
-					rooms[i]->cancel(reserv->getReservationNumber());//Warning needs testing
+					rooms[i]->cancel(reserv->getReservationNumber());
 					if (i < rooms.size() + 1) {
 						i = i + 1;
 					}
@@ -130,7 +169,8 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 					rooms[i]->addReservation(reserv);//Adds reservation to the room of the array
 					retrieveRoomFromNumber(rooms[i]->getRoomNumber())->addReservation(reserv);
 					reservid = reserv->getReservationNumber();
-					reservations.push_back(reserv);
+					//reservations.push_back(reserv);
+					reservations + reserv;//Overloaded operator '+'
 					stopper = 1;
 				}
 
@@ -145,7 +185,7 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 	}
 		if (a == 0)
 		{
-			delete reserv;//Test for deleting pointer
+			delete reserv;
 			cout<<"No available room found"<<endl;
 			return a;
 		}
@@ -159,7 +199,7 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 void Hotel::cancelReservation(int reservationid)
 {
 	if (retrieveReservationFromNumber(reservationid) != nullptr)
-	{
+	{/**
 		for(int i=0;i<reservations.size();i++)
 		{
 			if(reservations[i]->getReservationNumber()==reservationid)
@@ -169,6 +209,8 @@ void Hotel::cancelReservation(int reservationid)
 				reservations.erase(reservations.begin()+i);
 			}
 		}
+		*/
+		reservations - reservationid;//Overloaded operator '-'
 		cout<< "Reservation with reservation id " << reservationid << " was canceled"<<endl;
 	}
 
@@ -178,21 +220,28 @@ void Hotel::cancelReservation(int reservationid)
 	}
 			
 }
+
 double Hotel::incomeCalculate(int roomnumb)
 {
 	double earnings;
 	earnings = retrieveRoomFromNumber(roomnumb)->costCalculate();
 	return earnings;
 }
+
 double Hotel::incomeCalculate()
-{
+{/**
 	double income = 0;
 	for (Room* r : rooms)
 	{
 		income += r->costCalculate();
 	}
 	return income;
+	*/
+	double earnings = 0;
+	return earnings += rooms;//Overloaded operator '+='
+	
 }
+
 void Hotel::reservationPlan()
 {
 	cout << "Room\t";
@@ -201,7 +250,8 @@ void Hotel::reservationPlan()
 	cout << endl;
 	for (Room* roomavailable : rooms) {
 		cout <<roomavailable->getRoomNumber() << "      ";//Prints room number of all available rooms
-		for (int k = 0; k < 30; k++) {//Checks availability array and prints from it
+		for (int k = 0; k < 30; k++) //Checks availability array and prints from it
+		{
 			if (roomavailable->getAvailabilityI(k) == nullptr) {
 				cout << " - ";
 			}
