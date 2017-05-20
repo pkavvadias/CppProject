@@ -8,7 +8,7 @@
 /*
  * Overloading operator '-'
  */
-void operator-(vector<Reservation*>&v, int resid) //Test for operator overloading
+void operator-(vector<Reservation*>&v, int resid) 
 {
 	for (int i = 0; i < v.size(); i++)
 	{
