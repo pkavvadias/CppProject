@@ -123,7 +123,6 @@ bool Hotel::addReservationToRoom(Reservation* r, int rnumb)
 					break;
 				}
 				cout << "Reservation with reservation id " << r->getReservationNumber() << " added successfully to room with id " << rnumb<<endl;
-				//reservations.push_back(r);
 				reservations + r;//Overloaded operator '+'
 				a = true;
 				break;
@@ -169,7 +168,6 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 					rooms[i]->addReservation(reserv);//Adds reservation to the room of the array
 					retrieveRoomFromNumber(rooms[i]->getRoomNumber())->addReservation(reserv);
 					reservid = reserv->getReservationNumber();
-					//reservations.push_back(reserv);
 					reservations + reserv;//Overloaded operator '+'
 					stopper = 1;
 				}
@@ -199,17 +197,7 @@ int Hotel::addReservationToFirstRoom(Reservation* reserv)
 void Hotel::cancelReservation(int reservationid)
 {
 	if (retrieveReservationFromNumber(reservationid) != nullptr)
-	{/**
-		for(int i=0;i<reservations.size();i++)
-		{
-			if(reservations[i]->getReservationNumber()==reservationid)
-			{
-				reservations[i]->getRoom()->cancel(reservationid);
-				delete reservations[i];//Test for deleting pointer
-				reservations.erase(reservations.begin()+i);
-			}
-		}
-		*/
+	{
 		reservations - reservationid;//Overloaded operator '-'
 		cout<< "Reservation with reservation id " << reservationid << " was canceled"<<endl;
 	}
@@ -229,14 +217,7 @@ double Hotel::incomeCalculate(int roomnumb)
 }
 
 double Hotel::incomeCalculate()
-{/**
-	double income = 0;
-	for (Room* r : rooms)
-	{
-		income += r->costCalculate();
-	}
-	return income;
-	*/
+{
 	double earnings = 0;
 	return earnings += rooms;//Overloaded operator '+='
 	
