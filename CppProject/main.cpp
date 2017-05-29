@@ -152,10 +152,10 @@ int main()
 				break;
 			case 2:
 			{
-				cin.clear();//Required to clear buffer
+				cin.ignore(256, '\n');
 				Reservation* newres = new Reservation();
 				cout << "Insert name" << endl;
-				cin >> clientName;
+				getline(cin, clientName);
 				cout << "Insert arrival day" << endl;
 				cin >> arrivalDay;
 
