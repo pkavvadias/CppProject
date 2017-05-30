@@ -122,7 +122,7 @@ int main()
 				reservation->setDaysOfStay(rand() % (31 - reservation->getArrival())+1);
 				reservation->setNumberOfPeople(rand() % 5 + 1);
 				hotel->addReservationToFirstRoom(reservation);
-				random_cancel = rand() % 3;
+				random_cancel = rand() % 4;
 				if (random_cancel == 2)
 				{
 					int resget = rand() % hotel->getReservations().size()+1;
