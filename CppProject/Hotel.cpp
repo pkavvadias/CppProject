@@ -46,26 +46,32 @@ void Hotel::addRoom(Room* r)
 {
 	rooms.push_back(r);
 }
+
 void Hotel::setHotelName(string s)
 {
 	HotelName = s;
 }
+
 string Hotel::getHotelName()
 {
 	return HotelName;
 }
+
 vector<Room*> Hotel::getRoom()
 {
 	return rooms;
 }
+
 void Hotel::setReservations(Reservation* res)
 {
 	reservations.push_back(res);
 }
+
 vector<Reservation*> Hotel::getReservations()
 {
 	return reservations;
 }
+
 Room* Hotel:: retrieveRoomFromNumber(int roomid)
 {
 	Room* c = nullptr;
