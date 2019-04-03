@@ -21,6 +21,7 @@ void operator-(vector<Reservation*>&v, int resid)
 	}
 }
 
+
 /*
  * Overloading operator '+='
  */
